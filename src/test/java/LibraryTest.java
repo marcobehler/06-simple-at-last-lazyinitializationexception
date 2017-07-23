@@ -8,7 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -58,4 +61,17 @@ public class LibraryTest {
         htmlBuilder.append("</ul></body></html>");
         assertEquals(htmlBuilder.toString(), "<html><body><h3>all episodes</h3><ul><li>our first episode</li></ul></body></html>");
     }
+
+
+    @Test
+    public void spring_test() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+        SeriesService service = ctx.getBean(SeriesService.class);
+        List<Series> list = service.getSeries();
+        List<Episode> episodes = list.get(0).getEpisodes();
+        System.out.println("episodes = " + episodes.get(0).getName());
+    }
+
+
+
 }

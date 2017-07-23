@@ -29,6 +29,11 @@ dependencies {
     // https://mvnrepository.com/artifact/com.h2database/h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.195'
 
+    // https://mvnrepository.com/artifact/org.springframework/spring-orm
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.10.RELEASE'
+
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.10.RELEASE'
+
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
