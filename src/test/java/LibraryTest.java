@@ -40,25 +40,22 @@ public class LibraryTest {
 
     @Test
     public void render_html() {
-        StringBuilder htmlBuilder = new StringBuilder("<html><body><ul>");
+        StringBuilder htmlBuilder = new StringBuilder("<html><body><h3>all episodes</h3><ul>");
 
+        // step 1: open up connectino to db...load stuff...close db connection
+
+        List<Episode> episodes;
         try (Session session = sessionFactory.openSession()) {
-            List<Series> list = session.createQuery("from Series", Series.class).list();
-
-            List<Episode> episodes = list.get(0).getEpisodes();
-
-            episodes.forEach(e -> htmlBuilder.append("<li>").append(e.getName()).append("</li>"));
-
-            htmlBuilder.append("<li>").append(episod)
-
-            boolean initialized = Hibernate.isInitialized(episodes);
-            System.out.println("Did Hibernate _really_ load all episodes? initialized = " + initialized);
-
-            System.out.println("episodes.class = " + episodes.getClass());
+            List<Series> list = session.createQuery("from Series s", Series.class).list();
+            episodes = list.get(0).getEpisodes();
+            Hibernate.initialize(episodes);
         }
 
-        htmlBuilder.append("</ul></body></html>");
+        // step 2: sometime later....render the html....ouch!
 
-        assertEquals(htmlBuilder.toString(), "<html><body><ul><li>My Series Name</li></ul></body></html>");
+        episodes.forEach(e -> htmlBuilder.append("<li>").append(e.getName()).append("</li>"));
+
+        htmlBuilder.append("</ul></body></html>");
+        assertEquals(htmlBuilder.toString(), "<html><body><h3>all episodes</h3><ul><li>our first episode</li></ul></body></html>");
     }
 }
