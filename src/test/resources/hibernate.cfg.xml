@@ -12,9 +12,9 @@
         <!--  SQL dialect  -->
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="hbm2ddl.auto">validate</property>
-        <!--
-                <mapping class="com.marcobehler.lazyinit.Episode"/>
-                <mapping class="com.marcobehler.lazyinit.Series"/>-->
+
+        <mapping class="Episode"/>
+        <mapping class="Series"/>
 
     </session-factory>
 </hibernate-configuration>

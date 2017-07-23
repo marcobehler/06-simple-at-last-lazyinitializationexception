@@ -23,5 +23,8 @@ foreign key (series_id) REFERENCES series (id)
 
 )
 
-insert into epsiodes (name, description, series_id) values ('our first episode', 'this is such a great episode', 1);
+
+  select * from series;
+
+insert into episodes (name, description, series_id) values ('our first episode', 'this is such a great episode', 1);
 commit;
