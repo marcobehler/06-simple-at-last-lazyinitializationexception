@@ -14,8 +14,10 @@ public class SeriesService {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Transactional
+    @Transactional // open db connection...
     public List<Series> getSeries() {
-        return sessionFactory.getCurrentSession().createQuery("from Series s", Series.class).list();
+        return sessionFactory.getCurrentSession().createQuery("from Series s", Series.class).list(); // execute the query...
     }
+
+    // close db connection...
 }
