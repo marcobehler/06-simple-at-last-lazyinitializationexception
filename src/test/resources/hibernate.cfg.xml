@@ -13,6 +13,10 @@
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="hbm2ddl.auto">validate</property>
 
+
+        <property name="current_session_context_class">thread</property>
+
+
         <mapping class="Episode"/>
         <mapping class="Series"/>
 

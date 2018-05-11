@@ -35,6 +35,11 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.10.RELEASE'
 
 
+    // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.10.v20180503'
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.1'
+
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
